@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://vfv3eudcuu3i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g21bf"]
+size = Vector2(66, 617)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubfh8"]
+size = Vector2(1160.75, 47)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_444vf"]
+size = Vector2(64, 606)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_27ga2"]
+size = Vector2(1012.5, 38)
+
+[node name="ArenaWalls" type="StaticBody2D" unique_id=822370534]
+
+[node name="WallLeft" type="CollisionShape2D" parent="." unique_id=1442097706]
+position = Vector2(23, 298.5)
+shape = SubResource("RectangleShape2D_g21bf")
+debug_color = Color(0.5058824, 0.14509805, 0.28235295, 0.9529412)
+
+[node name="WallBtm" type="CollisionShape2D" parent="." unique_id=1885147713]
+position = Vector2(574.625, 634)
+shape = SubResource("RectangleShape2D_ubfh8")
+
+[node name="WallRight" type="CollisionShape2D" parent="." unique_id=1799204215]
+position = Vector2(1119, 302)
+shape = SubResource("RectangleShape2D_444vf")
+debug_color = Color(0.8392157, 0.23529412, 0.75686276, 0.81960785)
+
+[node name="WallTop" type="CollisionShape2D" parent="." unique_id=2137805096]
+position = Vector2(570.75, 11)
+shape = SubResource("RectangleShape2D_27ga2")
