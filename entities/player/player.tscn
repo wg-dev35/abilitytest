@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cno331uqnkt5p" path="res://assets/scripts/stats.gd" id="3_bls4j"]
 [ext_resource type="Texture2D" uid="uid://ux6i24x404t0" path="res://assets/textures/Snoblin_Pixel_RPG_Prototype_Characters/Characters/Prototype_Character/Default/death.png" id="4_8fjmc"]
 [ext_resource type="Script" uid="uid://b6hk27akkg02v" path="res://assets/scripts/movement.gd" id="4_bls4j"]
+[ext_resource type="Script" uid="uid://bloreudeeew8k" path="res://assets/scripts/sprite_anim.gd" id="4_qiwj3"]
 [ext_resource type="Texture2D" uid="uid://4d6k6wrs0y46" path="res://assets/textures/Snoblin_Pixel_RPG_Prototype_Characters/Characters/Prototype_Character/Default/idle.png" id="5_8fjmc"]
 [ext_resource type="Texture2D" uid="uid://8qkxw2cajufc" path="res://assets/textures/Snoblin_Pixel_RPG_Prototype_Characters/Characters/Prototype_Character/Default/walk.png" id="6_qiwj3"]
 
@@ -262,6 +263,7 @@ script = ExtResource("3_bls4j")
 script = ExtResource("4_bls4j")
 
 [node name="Sprites" type="Node2D" parent="." unique_id=126999360]
+script = ExtResource("4_qiwj3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprites" unique_id=1927053294]
 sprite_frames = SubResource("SpriteFrames_52apa")

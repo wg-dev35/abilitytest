@@ -1,24 +1,23 @@
 extends Node2D
 
-@onready var anim_sprite: AnimatedSprite2D = $Sprites/AnimatedSprite2D
+@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-
-
+var last_dir: String = "down"
+#IDLE ANIMATION
 func update_animation(velocity: Vector2) -> void:	
 	if velocity == Vector2.ZERO:
-		anim_sprite.stop()
+		var idle: String = "idle-" + last_dir
+		if anim_sprite.animation != idle:
+			anim_sprite.play(idle)
 		return
-	var target_anim: String = ""
-# Check if horizontal movement is stronger than vertical movement
+#MOVEMENT DIRECTIONALS
 	if abs(velocity.x) > abs(velocity.y):
-		anim_sprite.play("walk-side")
+		last_dir = "side"
 		scale.x = -1 if velocity.x < 0 else 1
 	else:
-		# Reset scale back to normal when moving up or down
 		scale.x = 1
-		if velocity.y < 0:
-			anim_sprite.play("walk-up")
-		elif velocity.y > 0:
-			anim_sprite.play("walk-down")
-	if anim_sprite.animation != target_anim or not anim_sprite.is_playing():
-		anim_sprite.play(target_anim)
+		last_dir = "up" if velocity.y < 0 else "down"
+#WALKING ANIMATON
+	var walking: String = "walk-" + last_dir
+	if anim_sprite.animation != walking or not anim_sprite.is_playing():
+		anim_sprite.play(walking)
