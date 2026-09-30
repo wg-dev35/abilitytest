@@ -120,7 +120,7 @@ size = Vector2(64, 693)
 size = Vector2(1148, 38)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_52apa"]
-size = Vector2(167, 65)
+size = Vector2(1149, 65)
 
 [node name="ArenaWalls" type="StaticBody2D" unique_id=822370534]
 
@@ -137,6 +137,7 @@ debug_color = Color(0.5058824, 0.14509805, 0.28235295, 0.9529412)
 [node name="WallBtm" type="CollisionShape2D" parent="." unique_id=1885147713]
 position = Vector2(574.625, 718)
 shape = SubResource("RectangleShape2D_ubfh8")
+debug_color = Color(0.81452817, 0.18687865, 0.8832669, 0.41960785)
 
 [node name="WallRight" type="CollisionShape2D" parent="." unique_id=1799204215]
 position = Vector2(1181, 350.5)
@@ -146,10 +147,17 @@ debug_color = Color(0.8392157, 0.23529412, 0.75686276, 0.81960785)
 [node name="WallTop" type="CollisionShape2D" parent="." unique_id=2137805096]
 position = Vector2(580, -13)
 shape = SubResource("RectangleShape2D_27ga2")
+debug_color = Color(0.8592264, 0.23819005, 0.69618165, 0.41960785)
 
 [node name="FieldHaz" type="Area2D" parent="." unique_id=489099936]
 script = ExtResource("2_pqmvo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FieldHaz" unique_id=1824973735]
-position = Vector2(33, 1)
+[node name="tophaz" type="CollisionShape2D" parent="FieldHaz" unique_id=1824973735]
+position = Vector2(582, 8)
 shape = SubResource("RectangleShape2D_52apa")
+debug_color = Color(0.9910781, 0.069441795, 0.1546672, 0.41960785)
+
+[node name="btmhaz" type="CollisionShape2D" parent="FieldHaz" unique_id=634157758]
+position = Vector2(573, 662)
+shape = SubResource("RectangleShape2D_52apa")
+debug_color = Color(0.9931614, 0.07983794, 0, 0.41960785)

@@ -1,13 +1,18 @@
 [gd_scene format=3 uid="uid://0ef8udkmddur"]
 
+[ext_resource type="Script" uid="uid://5ug5kemgyb0f" path="res://assets/scripts/main.gd" id="1_rarhs"]
 [ext_resource type="PackedScene" uid="uid://bu13m8dw40iwq" path="res://entities/player/player.tscn" id="1_rvslj"]
 [ext_resource type="PackedScene" uid="uid://vfv3eudcuu3i" path="res://scenes/arenas/arena.tscn" id="2_0bbpv"]
+[ext_resource type="PackedScene" uid="uid://cp55sgvfgyde" path="res://scenes/ui/HUD.tscn" id="3_0bbpv"]
 
 [node name="Node2D" type="Node2D" unique_id=1267585498]
+script = ExtResource("1_rarhs")
 
 [node name="ArenaWalls" parent="." unique_id=822370534 instance=ExtResource("2_0bbpv")]
-position = Vector2(0, 6)
+position = Vector2(81, 198)
 
 [node name="Player" parent="." unique_id=274318737 instance=ExtResource("1_rvslj")]
 position = Vector2(579, 509)
 scale = Vector2(1, 1)
+
+[node name="HUD" parent="." unique_id=673378989 instance=ExtResource("3_0bbpv")]

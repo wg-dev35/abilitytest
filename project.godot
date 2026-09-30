@@ -20,6 +20,10 @@ config/icon="res://assets/textures/icon.svg"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[gui]
+
+theme/custom="res://addons/pixel_ui/themes/wood.tres"
+
 [input]
 
 move_right={

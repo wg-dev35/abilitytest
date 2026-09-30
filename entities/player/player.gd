@@ -8,7 +8,7 @@ extends CharacterBody2D
 func _ready() -> void:
 	#deathcheck
 	stats.health_depleted.connect(_on_death)
-
+	stats.dmg_taken.connect(func(): sprites.hitflash(stats.iframe_dur))
 func _physics_process(delta: float) -> void:
 	sprites.update_animation(velocity)	
 
@@ -28,8 +28,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 func _on_death() -> void:
 	print("Game Over")
-	movement.get_tree().paused = true
+	movement.set_physics_process(false)
+	set_physics_process(false)
+	set_process(false)
 	sprites.playdeath()
 	await get_tree().create_timer(1.5).timeout
-	movement.get_tree().paused = false
 	get_tree().reload_current_scene()

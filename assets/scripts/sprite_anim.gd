@@ -25,3 +25,20 @@ func update_animation(velocity: Vector2) -> void:
 func playdeath() -> void:
 	var death: String = "death-" + last_dir
 	anim_sprite.play(death)
+#hitflash
+func hitflash(duration: float = 0.8) -> void:
+	#redflash
+	var flash_tween = create_tween()
+	anim_sprite.self_modulate = Color(3.0, 0.3, 0.3, 1.0)
+	flash_tween.tween_property(anim_sprite, "self_modulate", Color.WHITE, 0.1)
+	#iframe transparency
+	var time_left = duration - 0.1
+	if time_left > 0:
+		var loops = int(time_left/0.1)
+		var flicker_tween = create_tween().set_loops(loops)
+		flicker_tween.tween_property(anim_sprite, "modulate:a",0.3,0.05)
+		flicker_tween.tween_property(anim_sprite, "modulate:a",1.0,0.05)
+		
+		#reset
+		flicker_tween.finished.connect(func(): anim_sprite.modulate.a = 1.0)
+	

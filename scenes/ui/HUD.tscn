@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cp55sgvfgyde"]
+
+[ext_resource type="Script" uid="uid://codeth6vri15k" path="res://assets/scripts/HUD.gd" id="1_6ll6g"]
+[ext_resource type="Texture2D" uid="uid://i54f6x4f7jjy" path="res://assets/UI/baseui/hud_hp.png" id="2_atyv1"]
+[ext_resource type="Texture2D" uid="uid://dpbx36udcix3d" path="res://assets/UI/baseui/hud_frame.png" id="2_ig75s"]
+
+[node name="HUD" type="CanvasLayer" unique_id=673378989]
+script = ExtResource("1_6ll6g")
+
+[node name="hp_bar" type="TextureProgressBar" parent="." unique_id=270825501]
+offset_left = 6.0
+offset_top = 39.0
+offset_right = 205.0
+offset_bottom = 77.0
+value = 100.0
+texture_under = ExtResource("2_ig75s")
+texture_progress = ExtResource("2_atyv1")
+metadata/_edit_use_anchors_ = true
