@@ -21,3 +21,7 @@ func update_animation(velocity: Vector2) -> void:
 	var walking: String = "walk-" + last_dir
 	if anim_sprite.animation != walking or not anim_sprite.is_playing():
 		anim_sprite.play(walking)
+#DEATH ANIMATION
+func playdeath() -> void:
+	var death: String = "death-" + last_dir
+	anim_sprite.play(death)

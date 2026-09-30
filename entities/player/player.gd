@@ -4,8 +4,8 @@ extends CharacterBody2D
 @onready var stats: Stats = $Stats
 @onready var sprites: Node2D = $Sprites
 
-
 func _ready() -> void:
+	#deathcheck
 	stats.health_depleted.connect(_on_death)
 
 func _physics_process(delta: float) -> void:
@@ -27,4 +27,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 func _on_death() -> void:
 	print("Game Over")
-	queue_free()
+	set_physics_process(false)
+	sprites.playdeath()
+	await get_tree().create_timer(1.5).timeout
+	get_tree().reload_current_scene()

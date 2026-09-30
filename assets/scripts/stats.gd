@@ -9,10 +9,15 @@ signal health_depleted
 
 @onready var current_health: float = max_health:
 	set(value):
+		#1 deathcheck
+		var im_dead = (current_health <= 0)
+		#
 		current_health = clamp(value, 0, max_health)
 		health_changed.emit(current_health, max_health)
-		if current_health <= 0:
+		if current_health <= 0 and not im_dead:
 			health_depleted.emit()
+func _ready() -> void:
+	health_changed.emit(current_health,max_health)
 
 func take_damage(amount: float) -> void:
 	current_health -= amount

@@ -5,8 +5,9 @@
 
 [node name="Node2D" type="Node2D" unique_id=1267585498]
 
-[node name="Player" parent="." unique_id=274318737 instance=ExtResource("1_rvslj")]
-position = Vector2(579, 509)
-
 [node name="ArenaWalls" parent="." unique_id=822370534 instance=ExtResource("2_0bbpv")]
 position = Vector2(0, 6)
+
+[node name="Player" parent="." unique_id=274318737 instance=ExtResource("1_rvslj")]
+position = Vector2(579, 509)
+scale = Vector2(1, 1)
