@@ -3,8 +3,8 @@ extends Node2D
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var last_dir: String = "down"
-#IDLE ANIMATION
 func update_animation(velocity: Vector2) -> void:	
+#IDLE ANIMATION
 	if velocity == Vector2.ZERO:
 		var idle: String = "idle-" + last_dir
 		if anim_sprite.animation != idle:

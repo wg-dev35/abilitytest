@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @onready var stats: Stats = $Stats
 @onready var sprites: Node2D = $Sprites
+@onready var movement: TopDownMovement =$Movement
 
 func _ready() -> void:
 	#deathcheck
@@ -27,7 +28,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 func _on_death() -> void:
 	print("Game Over")
-	set_physics_process(false)
+	movement.get_tree().paused = true
 	sprites.playdeath()
 	await get_tree().create_timer(1.5).timeout
+	movement.get_tree().paused = false
 	get_tree().reload_current_scene()

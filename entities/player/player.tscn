@@ -266,6 +266,7 @@ script = ExtResource("4_bls4j")
 script = ExtResource("4_qiwj3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprites" unique_id=1927053294]
+process_mode = 3
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_52apa")
 animation = &"death-down"
