@@ -8,7 +8,15 @@ extends Node
 var dead: bool = false
 func death() -> void:
 	dead = true
+#status effects
+func speed_effect(new_speed: float) -> void:
+	move_speed = new_speed
 
+
+
+
+
+#movement
 func _physics_process(_delta: float) -> void:
 	if not body or dead:
 		return

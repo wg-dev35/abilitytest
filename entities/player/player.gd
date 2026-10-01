@@ -4,11 +4,17 @@ extends CharacterBody2D
 @onready var stats: Stats = $Stats
 @onready var sprites: Node2D = $Sprites
 @onready var movement: TopDownMovement =$Movement
+@onready var attributes: Attributes = $Attributes
 
 func _ready() -> void:
 	#deathcheck
 	stats.health_depleted.connect(_on_death)
+	#invulerability/hitchecks
 	stats.dmg_taken.connect(func(): sprites.hitflash(stats.iframe_dur))
+	#atributes
+	attributes.speed_changed.connect(movement.speed_effect)
+	
+	
 func _physics_process(delta: float) -> void:
 	sprites.update_animation(velocity)	
 
