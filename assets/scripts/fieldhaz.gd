@@ -1,4 +1,4 @@
-extends Area2D
+class_name Hazards extends Area2D
 
 
 @export var dmg_dealt: float = 25.0

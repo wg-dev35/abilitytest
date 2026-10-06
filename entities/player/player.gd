@@ -1,10 +1,10 @@
-class_name Player
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 @onready var stats: Stats = $Stats
 @onready var sprites: Node2D = $Sprites
 @onready var movement: TopDownMovement =$Movement
 @onready var attributes: Attributes = $Attributes
+@onready var moveset: Moveset = $Moveset
 
 func _ready() -> void:
 	#deathcheck
@@ -26,6 +26,15 @@ func _physics_process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:    
 	if Input.is_action_just_pressed("ui_accept"): # Spacebar / Enter by default
 		stats.take_damage(25)
+	elif Input.is_action_just_pressed("punch"):
+		moveset.input_atk("punch")
+	elif Input.is_action_just_pressed("jab"):
+		moveset.input_atk("jab")
+	elif Input.is_action_just_pressed("kick"):
+		moveset.input_atk("kick")
+	elif Input.is_action_just_pressed("dash"):
+		movement.base_dash()
+			
 		
 	
 	

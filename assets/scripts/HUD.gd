@@ -1,4 +1,4 @@
-extends CanvasLayer
+class_name HudUi extends CanvasLayer
 
 @onready var health_bar: TextureProgressBar = $hp_bar
 

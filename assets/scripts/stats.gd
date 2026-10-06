@@ -1,5 +1,4 @@
-extends Node
-class_name Stats
+class_name Stats extends Node
 
 # Signals notify other nodes (like your UI) without needing direct references
 signal health_changed(current_health, max_health)

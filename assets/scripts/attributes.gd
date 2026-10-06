@@ -1,5 +1,4 @@
-class_name Attributes
-extends Node
+class_name Attributes extends Node
 
 # The signals that the rest of the game will listen to
 signal speed_changed(new_speed: float)
