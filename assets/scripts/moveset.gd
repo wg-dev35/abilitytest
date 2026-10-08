@@ -6,21 +6,20 @@ class_name Moveset extends Node
 var on_cooldown: bool = false
 
 
-func input_atk(atk_type: String) -> void:
+func input_atk(move: AtkData) -> void:
 	if on_cooldown == true or sprites.state in [Sprites.State.ATTACK,Sprites.State.STAGGER, Sprites.State.DEAD]:
 		return
-	var dmg = attributes.get_damage()
-	var cd = attributes.get_attack_cooldown()
-	sprites.play_atk(atk_type)
+	sprites.hitbox.atkdata = move	
+	sprites.play_atk(move)
 	
-	match atk_type:
+	match move.anim:
 		"punch":
-			print("hadoken",dmg)
+			print("hadoken")
 		"kick":
-			print("tatsumaki-senpukuakku",dmg * 1.6)
+			print("tatsumaki-senpukuakku")
 		"jab":
-			print("huh",dmg * 0.8)
-	_start_cooldown(cd)
+			print("huh")
+	_start_cooldown(attributes.get_attack_cooldown())
 
 func _start_cooldown(duration: float) -> void:
 	on_cooldown = true

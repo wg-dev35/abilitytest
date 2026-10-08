@@ -1,12 +1,34 @@
 class_name Sprites extends Node2D
-
+@onready var hitbox: Hitbox = $"../Hitbox"
+@onready var hitbox_shape: CollisionShape2D = $"../Hitbox/hitbox_shape"
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 var last_dir: String = "down" 
 enum State {IDLE, MOVE, ATTACK, STAGGER, DEAD}
 var state: State = State.IDLE
+
+var cur_move: AtkData = null
+
+
+
+
 func _ready() -> void:
 	anim_sprite.animation_finished.connect(_on_animation_finished)
-	
+	anim_sprite.frame_changed.connect(_on_frame_changed)
+
+func _on_frame_changed() -> void:
+	if state!= State.ATTACK or cur_move == null:
+		return
+			#HITBOX CHECK
+	if anim_sprite.frame >= cur_move.active_start and anim_sprite.frame <= cur_move.active_end:
+		hitbox_shape.disabled = false
+	else:
+		hitbox_shape.disabled = true
+func _on_animation_finished() -> void:
+	if state == State.ATTACK or state == State.STAGGER:
+		cur_move = null
+		hitbox_shape.disabled = true
+		state = State.IDLE
+
 func update_animation(velocity: Vector2) -> void:
 	if state in [State.ATTACK, State.STAGGER, State.DEAD]:
 		return
@@ -17,7 +39,7 @@ func update_animation(velocity: Vector2) -> void:
 		var idle: String = "idle-" + last_dir
 		anim_sprite.play(idle)
 		return
-#MOVEMENT DIRECTIONALS <-----IM CONFUSED HERE
+#MOVEMENT DIRECTIONALS
 	if abs(velocity.x) > abs(velocity.y):
 		last_dir = "side"
 		scale.x = -1 if velocity.x < 0 else 1
@@ -34,6 +56,24 @@ func playdeath() -> void:
 	state = State.DEAD
 	var death: String = "death-" + last_dir
 	anim_sprite.play(death)
+
+
+#####COMBAT####
+func play_atk(move: AtkData) -> void:
+	state = State.ATTACK
+	cur_move = move
+	
+	match last_dir:
+		"side":
+			hitbox_shape.position = Vector2(cur_move.reach * scale.x, 0)
+		"up":
+			hitbox_shape.position = Vector2(0, -cur_move.reach)
+		"down":
+			hitbox_shape.position = Vector2(0, cur_move.reach)
+	
+	var atk_anim: String = cur_move.anim + "-" + last_dir
+	anim_sprite.play(atk_anim)
+	
 #hitflash 
 func hitflash(duration: float = 0.8) -> void:
 	state = State.STAGGER
@@ -54,12 +94,4 @@ func hitflash(duration: float = 0.8) -> void:
 		#reset
 		flicker_tween.finished.connect(func(): anim_sprite.modulate.a = 1.0)
 	
-func _on_animation_finished() -> void:
-	if state == State.ATTACK or state == State.STAGGER:
-		state = State.IDLE
-	
-func play_atk(atk_type: String) -> void:
-	state = State.ATTACK
-	var atk_anim: String = atk_type + "-" + last_dir
-	anim_sprite.play(atk_anim)
 	

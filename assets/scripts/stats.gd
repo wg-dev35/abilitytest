@@ -21,7 +21,10 @@ var invincibility: bool = false
 			health_depleted.emit()
 func _ready() -> void:
 	health_changed.emit(current_health,max_health)
-  
+ 
+func on_hit(data: AtkData) -> void:
+	take_damage(data.basedmg ) 
+	
 func take_damage(amount: float) -> void:
 	#iframe invul
 	if invincibility or current_health <= 0:

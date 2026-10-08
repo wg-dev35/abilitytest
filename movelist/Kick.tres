@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AtkData" format=3 uid="uid://bpq6saa0sgcvi"]
+
+[ext_resource type="Script" uid="uid://7nhdosisstw4" path="res://assets/scripts/atkdata.gd" id="1_vvbib"]
+
+[resource]
+script = ExtResource("1_vvbib")
+anim = "kick"
+active_start = 5
+active_end = 9
+basedmg = 15.0
+metadata/_custom_type_script = "uid://7nhdosisstw4"

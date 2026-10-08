@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AtkData" format=3 uid="uid://b1w30hifvsrx6"]
+
+[ext_resource type="Script" uid="uid://7nhdosisstw4" path="res://assets/scripts/atkdata.gd" id="1_ubju0"]
+
+[resource]
+script = ExtResource("1_ubju0")
+anim = "jab"
+active_start = 2
+active_end = 4
+basedmg = 5.0
+metadata/_custom_type_script = "uid://7nhdosisstw4"

@@ -6,6 +6,11 @@ class_name Player extends CharacterBody2D
 @onready var attributes: Attributes = $Attributes
 @onready var moveset: Moveset = $Moveset
 
+##exports
+@export var light: AtkData
+@export var medium: AtkData
+@export var heavy: AtkData
+
 func _ready() -> void:
 	#deathcheck
 	stats.health_depleted.connect(_on_death)
@@ -24,16 +29,15 @@ func _physics_process(delta: float) -> void:
 
 #testing
 func _unhandled_input(event: InputEvent) -> void:    
-	if Input.is_action_just_pressed("ui_accept"): # Spacebar / Enter by default
-		stats.take_damage(25)
-	elif Input.is_action_just_pressed("punch"):
-		moveset.input_atk("punch")
-	elif Input.is_action_just_pressed("jab"):
-		moveset.input_atk("jab")
-	elif Input.is_action_just_pressed("kick"):
-		moveset.input_atk("kick")
-	elif Input.is_action_just_pressed("dash"):
+	if Input.is_action_just_pressed("dash"):
 		movement.base_dash()
+	elif Input.is_action_just_pressed("jab") and light != null:
+		moveset.input_atk(light)
+	elif Input.is_action_just_pressed("punch") and medium != null:
+		moveset.input_atk(medium)
+	elif Input.is_action_just_pressed("kick") and heavy != null:
+		moveset.input_atk(heavy)
+
 			
 		
 	
